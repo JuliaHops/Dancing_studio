@@ -158,7 +158,13 @@
 ## 2. Реализация в MySQL
 
 ### 2.1. Логическая модель
-Построена ER-диаграмма (3НФ).  
+Для реализации в MySQL построена упрощенная ER-диаграмма. 
+
+<img width="774" height="500" alt="image" src="https://github.com/user-attachments/assets/3fccb77a-53f3-469b-8e49-c865bf737e3d" />
+
+
+### 2.2. Физическая модель
+
 Сущности:  
 - Personality (ФИО, телефон, возраст)  
 - Client (карта, связь с личностью)  
@@ -168,12 +174,12 @@
 - Hall (залы, связь с инвентарём)  
 - Type_of_dance (виды танцев)  
 - Timetable (расписание: дата, зал, тип танца)  
-- Связующие таблицы: Client_has_Timetable, Employee_has_Timetable  
+- Связующие таблицы: Client_has_Timetable, Employee_has_Timetable
 
-### 2.2. Физическая модель
-- Все сущности реализованы в MySQL.  
-- Добавлены PK и FK, ограничения NOT NULL, UNIQUE.  
-- Связи многие-ко-многим разделены через промежуточные таблицы.  
+<img width="778" height="476" alt="image" src="https://github.com/user-attachments/assets/befcb313-4a4f-4755-9a6a-cf6b5f6e27aa" />
+
+  
+Все сущности реализованы в MySQL, добавлены ключи PK и FK, ограничения NOT NULL, UNIQUE, связи многие-ко-многим разделены через промежуточные таблицы.  
 
 ### 2.3. Заполнение БД
 - Таблицы заполнены начальными данными (INSERT INTO).  
