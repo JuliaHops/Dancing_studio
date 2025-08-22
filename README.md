@@ -143,8 +143,10 @@
 ## 5. Логическая и физическая модель
 Структура таблиц и их взаимосвязи на уровне СУБД.  
 
+Логическая модель
 <img width="848" height="572" alt="image" src="https://github.com/user-attachments/assets/65c18327-fee3-4a19-91a8-e6605b405dc2" />
 
+Физическая модель
 <img width="861" height="511" alt="image" src="https://github.com/user-attachments/assets/84385d1b-5ec3-4168-91d0-1bbe3dabc66e" />
 
 ---
