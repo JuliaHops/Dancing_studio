@@ -85,18 +85,27 @@
 Диаграммы показывают движение информации между подсистемами учёта, расписания и мероприятий.  
 
 <img width="884" height="410" alt="image" src="https://github.com/user-attachments/assets/77ee9975-a7f6-4a8c-b901-ff4584b229ef" />
+
 Контекстная диаграмма «Танцевальная студия» в нотации DFD
 
+
 <img width="785" height="441" alt="image" src="https://github.com/user-attachments/assets/8dbcfa4f-e2cb-4fa9-bac2-8c3fa603046a" />
+
 Декомпозиция контекстной диаграммы «Танцевальная студия» в методологии DFD
 
+
 <img width="937" height="522" alt="image" src="https://github.com/user-attachments/assets/4a6efd6f-ca44-4427-8c4b-57c6bcb117ad" />
+
 Декомпозиция блока «Учет» в методологии DFD
 
+
 <img width="867" height="474" alt="image" src="https://github.com/user-attachments/assets/62dfbc10-fe81-4792-a42e-6ff2ac37377a" />
+
 Декомпозиция блока «Расписание» в методологии DFD
 
+
 <img width="873" height="475" alt="image" src="https://github.com/user-attachments/assets/e4720b35-e594-4279-9e61-8b468c6c16b6" />
+
 Декомпозиция блока «Мероприятия» в методологии DFD
 
 
