@@ -181,6 +181,9 @@
   
 Все сущности реализованы в MySQL, добавлены ключи PK и FK, ограничения NOT NULL, UNIQUE, связи многие-ко-многим разделены через промежуточные таблицы.
 
+
+Характеристики сущностей базы данных
+
 | Название сущности       | Название атрибута   | Тип данных | Особое состояние | Ключ      |
 |--------------------------|---------------------|------------|------------------|-----------|
 | Timetable           | Id_Timetable        | int        | Auto_increment   | PK        |
@@ -205,7 +208,13 @@
 | Employee            | id_Client           | int        | Auto_increment   | PK        |
 |                          | Id_Personality      | int        | Not null         | FK        |
 |                          | Id_Post             | int        | Not null         | FK        |
-| Employee_has_Timetable | id_Employee      | int        | Not null
+| Employee_has_Timetable | id_Employee      | int        | Not null         | PK, FK    |
+|                          | Id_Timetable        | int        | Not null         | PK, FK    |
+| Inventory           | Id_Inventory        | int        | Auto_increment   | PK        |
+|                          | Name_inventory      | varchar    | Not null         | -         |
+| Hall                | Id_Hall             | int        | Auto_increment   | PK        |
+|                          | Number_hall         | varchar    | Not null         | -         |
+|                          | Id_Inventory        | int        | Not null         | FK        |
 
 ### 2.3. Заполнение БД
 - Таблицы заполнены начальными данными (INSERT INTO).  
