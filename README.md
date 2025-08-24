@@ -235,7 +235,7 @@
 
 ### 2.5. Хранимые процедуры, функции и триггеры
 - Функции:
-- - возраст клиента по ID
+  - возраст клиента по ID
     <img width="966" height="302" alt="image" src="https://github.com/user-attachments/assets/cce95b17-d50a-4643-9ca9-adba97b56ee0" />
 
   -  количество посещений за неделю
@@ -245,7 +245,7 @@
     <img width="971" height="330" alt="image" src="https://github.com/user-attachments/assets/02227f8c-3cfe-4f2d-ae65-1d90bd26cfe9" />
 
 - Процедуры:
-- - добавление сотрудника,
+  - добавление сотрудника,
   <img width="539" height="708" alt="image" src="https://github.com/user-attachments/assets/2373daeb-4fdf-4802-ab52-889a34bc9430" />
 
   - обновление карты клиента,
