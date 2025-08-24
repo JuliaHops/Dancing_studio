@@ -234,12 +234,36 @@
 - Теоретико-множественные операции: объединение, пересечение, разность, деление.  
 
 ### 2.5. Хранимые процедуры, функции и триггеры
-- Функции: возраст клиента по ID, количество посещений за неделю, поиск зала по типу танца и дате.  
-- Процедуры: добавление сотрудника, обновление карты клиента, удаление человека по ID.  
+- Функции:
+- - возраст клиента по ID
+    <img width="966" height="302" alt="image" src="https://github.com/user-attachments/assets/cce95b17-d50a-4643-9ca9-adba97b56ee0" />
+
+  -  количество посещений за неделю
+    <img width="893" height="271" alt="image" src="https://github.com/user-attachments/assets/85cb98e0-ca0e-4384-a3f5-41f3859d29a3" />
+
+  -  поиск зала по типу танца и дате.
+    <img width="971" height="330" alt="image" src="https://github.com/user-attachments/assets/02227f8c-3cfe-4f2d-ae65-1d90bd26cfe9" />
+
+- Процедуры:
+- - добавление сотрудника,
+  <img width="539" height="708" alt="image" src="https://github.com/user-attachments/assets/2373daeb-4fdf-4802-ab52-889a34bc9430" />
+
+  - обновление карты клиента,
+  <img width="664" height="466" alt="image" src="https://github.com/user-attachments/assets/79008bd8-f928-4e5e-b113-2c77d773b408" />
+
+  - удаление человека по ID.
+  <img width="974" height="583" alt="image" src="https://github.com/user-attachments/assets/85a524c4-0ec2-439f-b3a4-f722a8795bcc" />
+
 - Триггеры:  
-  - замена инвентаря при удалении;  
-  - запрет добавления клиентов младше 18 лет;  
-  - контроль изменения возраста.  
+  - замена инвентаря при удалении;
+    <img width="812" height="319" alt="image" src="https://github.com/user-attachments/assets/a81579ea-25a8-45f8-9654-3c4672835423" />
+
+  - запрет добавления клиентов младше 18 лет;
+    <img width="974" height="388" alt="image" src="https://github.com/user-attachments/assets/489e9333-dea2-44f9-841b-9f487f780eea" />
+
+  - контроль изменения возраста.
+    <img width="974" height="406" alt="image" src="https://github.com/user-attachments/assets/25f73b02-8a3c-4508-b580-bebc9732fc25" />
+
 
 ### 2.6. Оконные функции
 - Агрегаты по окнам: AVG, SUM, COUNT, MIN, MAX.  
