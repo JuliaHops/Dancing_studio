@@ -1,0 +1,306 @@
+create database Dance_studio;
+use Dance_studio;
+
+create table Post(
+id_Post int(10) AUTO_INCREMENT,
+Postcol varchar(45) NOT NULL,
+PRIMARY KEY (id_Post));
+
+create table Personality(
+id_Personality int(10) AUTO_INCREMENT,
+Second_name varchar(45) NOT NULL,
+Name varchar(45) NOT NULL,
+Surname varchar(45),
+Phone varchar(15) NOT NULL,
+Age int(3) NOT NULL,
+PRIMARY KEY (id_Personality));
+
+create table Client(
+id_Client int(10) AUTO_INCREMENT,
+id_Personality int(10) NOT NULL,
+Card varchar(45),
+PRIMARY KEY (id_Client),
+FOREIGN KEY (id_Personality)
+REFERENCES Personality (id_Personality));
+
+create table Employee(
+id_Employee int(10) AUTO_INCREMENT,
+id_Post int(10) NOT NULL,
+id_Personality int(10) NOT NULL,
+PRIMARY KEY(id_Employee),
+FOREIGN KEY (id_Post)
+REFERENCES Post (id_Post),
+FOREIGN KEY (id_Personality)
+REFERENCES Personality (id_Personality));
+
+create table Inventory(
+id_Inventory int(10) AUTO_INCREMENT,
+Name_inventory varchar(45) NOT NULL,
+PRIMARY KEY(id_Inventory));
+
+create table Hall(
+id_Hall int(10) AUTO_INCREMENT,
+Number_hall int(4) NOT NULL,
+id_Inventory int(10) NOT NULL,
+PRIMARY KEY (id_Hall),
+FOREIGN KEY (id_Inventory)
+REFERENCES Inventory (id_Inventory));
+
+create table Type_of_dance(
+id_Type_of_dance int(10) AUTO_INCREMENT,
+Type_of_dancecol varchar(45),
+PRIMARY KEY (id_Type_of_dance));
+
+create table Timetable(
+id_Timetable int(10) AUTO_INCREMENT,
+Data datetime NOT NULL,
+id_Type_of_dance int(10) NOT NULL,
+id_Hall int(10) NOT NULL,
+PRIMARY KEY (id_Timetable),
+FOREIGN KEY (id_Type_of_dance)
+REFERENCES Type_of_dance (id_Type_of_dance)),
+FOREIGN KEY (id_Hall)
+REFERENCES Hall (id_Hall));
+
+create table Employee_has_Timetable(
+id_Employee int(10) NOT NULL,
+id_Timetable int(10) NOT NULL,
+PRIMARY KEY (id_Employee, id_Timetable),
+FOREIGN KEY (id_Employee)
+REFERENCES Employee (id_Employee),
+FOREIGN KEY (id_Timetable)
+REFERENCES Timetable (id_Timetable));
+
+create table Client_has_Timetable(
+id_Client int(10) NOT NULL,
+id_Timetable int(10) NOT NULL,
+PRIMARY KEY (id_Client, id_Timetable),
+FOREIGN KEY (id_Client)
+REFERENCES Client (id_Client),
+FOREIGN KEY (id_Timetable)
+REFERENCES Timetable (id_Timetable));
+
+INSERT INTO Personality (id_Personality, Second_name, Name, Surname, Phone, Age) VALUES (1, "Давыдков", "Андрей", "Витальевич", 123, 23), (3, "Корманов", "Павел", "Андреевич", 345, 30), (4, "Каянова", "Ксения", "Валерьевна", 666, 25), (5, "Дмитриенко", "Юлия", "Олеговна", 906, 35), (6, "Захрулина", "Анна", "Михайловна", 673, 36), (8, "Антохина", "Мария", "Дмитриевна", 509, 40), (9, "Деревяненко", "Алена", "Васильевна", 739, 23), (10, "Зайнулин", "Захар", "Витальевич", 560, 34), (11, "Дронова", "Алиса", "Егоровна", 540, 26), (13, "Господиновна", "Рони", "Антоновна", 447, 20), (14, "Руни", "Джамул", "Архамович", 673, 25), (15, "Ванчик", "Дэлор", "Максимович", 890, 19);
+
+INSERT INTO Personality (id_Personality, Second_name, Name, Phone, Age) VALUES (2, "Вотяков", "Арсений", 234, 23), (7, "Вотяков", "Андрей", 785, 27), (12, "Женко", "Дмитрий", 445, 18);
+
+INSERT INTO Client (id_Client, id_Personality, Card) VALUE (2, 10, 123), (5, 13, 567), (7, 15, 99);
+
+INSERT INTO Client (id_Client, id_Personality) VALUE (1, 9), (3, 11), (4, 12), (6, 14), (8, 4);
+
+INSERT INTO Post (Postcol) VALUES ("Руководитель") , ("Администратор"), ("Тренер"), ("Маркетолог"), ("Видеограф"), ("Уборщик");
+
+INSERT INTO Employee (id_Post, id_Personality) VALUES
+(3, 3), (2, 2), (3, 1), (3, 4), (1, 5), (4, 6), (5, 7), (6, 8);
+
+INSERT INTO Inventory (Name_inventory) VALUES ("Мат"), ("Подушка"), ("Кубик"), ("Скалка"), ("Резинка");
+
+INSERT INTO Hall (id_Hall, Number_hall, id_Inventory) VALUES (1, "A1", 1), (2, "A2", 1), (3, "C1", 2), (4, "C2", 3), (5, "B1", 4), (6, "B3", 5);
+
+INSERT INTO Type_of_dance (Type_of_dancecol) VALUES ("танго"), ("хип-хоп"), ("стрип"), ("джаз-фанк"), ("джаз");
+
+INSERT INTO Timetable (id_Timetable, Data, id_Type_of_dance, id_Hall) VALUES (1, '2023-12-11 12:00:00', 1, 1), (2, '2023-12-11 19:00:00', 2, 2), (3, '2023-12-11 19:00:00', 4, 3), (4, '2023-12-11 18:00:00', 2, 6), (5, '2023-12-12 18:00:00', 4, 3), (6, '2023-12-12 19:00:00', 5, 5), (7, '2023-12-12 20:00:00', 3, 4), (8, '2023-12-13 19:00:00', 2, 2), (9, '2023-12-13 20:00:00', 3, 4), (10, '2023-12-14 16:00:00', 4, 3), (11, '2023-12-14 18:00:00', 2, 6), (12, '2023-12-15 12:00:00', 1, 1), (13, '2023-12-15 18:00:00', 2, 2), (14, '2023-12-15 20:00:00', 3, 4), (15, '2023-12-16 14:00:00', 5, 5), (16, '2023-12-16 17:00:00', 4, 4);
+
+INSERT INTO Employee_has_Timetable (id_Employee, id_Timetable) VALUES (3, 1), (4, 1), (1, 2), (4, 3), (4, 4), (4, 5), (3, 6), (4, 7), (1, 8), (4, 9), (4, 10), (4, 11), (3, 12), (4, 12), (1, 13), (4, 14), (1, 15), (4, 16);
+
+INSERT INTO Client_has_Timetable (id_Client, id_Timetable) VALUES (7, 1), (4, 1), (1, 1), (3, 1), (2, 2), (5, 3), (1, 3), (2, 4), (1, 5), (4, 6), (7, 6), (3, 7), (1, 7), (2, 8), (8, 8), (3, 9), (1, 10), (5, 10), (2, 11), (5, 11), (7, 12), (4, 12), (1, 12), (3, 12), (2, 13), (3, 14), (1, 14), (4, 15), (7, 15), (3 ,16), (6, 16);
+
+
+______________________________________
+
+SELECT * FROM Personality;
+SELECT id_Personality FROM Personality;
+SELECT Name, Age FROM Personality;
+SELECT * FROM Personality ORDER BY Second_name;
+SELECT * FROM Personality ORDER BY Second_name DESC;
+SELECT * FROM Personality ORDER BY Second_name, Name;
+SELECT * FROM Timetable;
+SELECT * FROM Timetable WHERE id_Hall=1;
+SELECT * FROM Personality WHERE Second_name="Вотяков";
+SELECT * FROM Timetable WHERE id_Hall>2;
+SELECT * FROM Timetable WHERE id_Hall>4;
+SELECT * FROM Timetable WHERE id_Hall<4;
+SELECT * FROM Timetable WHERE id_Hall>=4;
+SELECT * FROM Timetable WHERE id_Hall<=4;
+SELECT * FROM Timetable WHERE id_Type_of_dance!=1;
+SELECT * FROM Personality;
+SELECT * FROM Personality WHERE Surname IS NOT NULL;
+SELECT * FROM Personality WHERE Surname IS NULL;
+SELECT * FROM Timetable WHERE id_Hall IS NULL;
+SELECT * FROM Personality;
+SELECT * FROM Personality WHERE id_personality BETWEEN 13 AND 15;
+ SELECT * FROM Personality WHERE id_personality IN (3, 5);
+ SELECT * FROM Inventory WHERE id_Inventory NOT IN (3, 5);
+SELECT * FROM Inventory;
+SELECT * FROM Personality WHERE Second_name LIKE 'За%';
+ SELECT * FROM Inventory WHERE Name_inventory NOT LIKE 'Ска%';
+SELECT * FROM Personality WHERE Name LIKE '%ха%';
+SELECT * FROM Personality WHERE Name LIKE '_ахар';
+ ALTER TABLE Client ADD COLUMN invite int(10) AFTER id_Personality, ADD COLUMN rating varchar(20) AFTER invite;
+ describe Client;
+SELECT * FROM Client;
+
+UPDATE Client SET invite=5
+WHERE id_Client=1;
+
+UPDATE Client SET invite=9
+WHERE id_Client=2;
+
+ UPDATE Client SET invite=25
+ WHERE id_Client=3;
+
+UPDATE Client SET invite=30
+WHERE id_Client=4;
+
+ UPDATE Client SET invite=1
+WHERE id_Client=5;
+
+ UPDATE Client SET invite=3
+WHERE id_Client=6;
+
+ UPDATE Client SET invite=50
+WHERE id_Client=7;
+
+UPDATE Client SET invite=15
+ WHERE id_Client=8;
+
+SELECT * FROM Client;
+
+________________
+
+SHOW CREATE TABLE Client;
+ALTER TABLE Employee DROP CONSTRAINT employee_ibfk_1;
+ ALTER TABLE Employee DROP CONSTRAINT employee_ibfk_2;
+ALTER TABLE Client_has_timetable DROP CONSTRAINT client_has_timetable_ibfk_1;
+ ALTER TABLE Client_has_timetable DROP CONSTRAINT client_has_timetable_ibfk_2;
+ALTER TABLE employee_has_timetable DROP CONSTRAINT employee_has_timetable_ibfk_1;
+ALTER TABLE employee_has_timetable DROP CONSTRAINT employee_has_timetable_ibfk_2;
+ALTER TABLE Hall DROP CONSTRAINT hall_ibfk_1;
+ALTER TABLE Timetable DROP CONSTRAINT timetable_ibfk_1;
+ALTER TABLE Timetable DROP CONSTRAINT timetable_ibfk_2;
+ALTER TABLE Client ADD FOREIGN KEY (id_personality) REFERENCES personality(id_personality) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Employee ADD FOREIGN KEY (id_personality) REFERENCES personality(id_personality) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Client_has_timetable ADD FOREIGN KEY (id_client) REFERENCES client (id_client) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Client_has_timetable ADD FOREIGN KEY (id_timetable) REFERENCES Timetable (id_timetable) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Employee_has_timetable ADD FOREIGN KEY (id_employee) REFERENCES employee (id_employee) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Employee_has_timetable ADD FOREIGN KEY (id_timetable) REFERENCES Timetable (id_timetable) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Hall ADD FOREIGN KEY (id_inventory) REFERENCES Inventory (id_inventory) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Timetable ADD FOREIGN KEY (id_hall) REFERENCES Hall (id_hall) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Timetable ADD FOREIGN KEY (id_type_of_dance) REFERENCES Type_of_dance (id_type_of_dance) ON DELETE CASCADE ON UPDATE CASCADE;
+SELECT Name FROM Personality;
+SELECT * FROM Timetable WHERE id_Hall=4;
+SELECT Data,Type_of_dancecol FROM Timetable INNER JOIN Type_of_dance ON timetable.id_type_of_dance=type_of_dance.id_type_of_dance WHERE (type_of_dance.type_of_dancecol='танго');
+SELECT Number_hall, Name_inventory FROM Hall INNER JOIN Inventory ON hall.id_inventory=inventory.id_inventory;
+SELECT Number_hall, Name_inventory FROM Hall INNER JOIN Inventory ON hall.id_inventory=inventory.id_inventory WHERE (hall.number_hall="A1");
+SELECT Number_hall, Name_inventory FROM Hall INNER JOIN Inventory ON hall.id_inventory=inventory.id_inventory WHERE (hall.number_hall LIKE "A%" AND inventory.name_inventory="Мат");
+SELECT Data,Type_of_dancecol FROM Timetable INNER JOIN Type_of_dance ON timetable.id_type_of_dance=type_of_dance.id_type_of_dance WHERE (type_of_dance.type_of_dancecol='танго' OR type_of_dance.type_of_dancecol='стрип');
+
+SELECT Number_hall, Name_inventory FROM Hall INNER JOIN Inventory ON hall.id_inventory=inventory.id_inventory WHERE hall.number_hall LIKE "A%" AND EXISTS (SELECT * FROM Inventory WHERE inventory.name_inventory="Мат");
+SELECT Data, Type_of_dancecol FROM Timetable INNER JOIN Type_of_dance ON timetable.id_type_of_dance=type_of_dance.id_type_of_dance WHERE timetable.data LIKE '% 19:00:00';
+
+SELECT Data, Type_of_dancecol FROM Timetable INNER JOIN Type_of_dance ON timetable.id_type_of_dance=type_of_dance.id_type_of_dance WHERE timetable.data LIKE '% 19:00:00' AND NOT EXISTS (SELECT * FROM Type_of_dance WHERE timetable.id_type_of_dance=type_of_dance.id_type_of_dance AND type_of_dancecol="хип-хоп");
+SELECT id_Client, COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_C
+lient;
+SELECT id_Client, COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client HAVING kolvo=1;
+ SELECT AVG(kolvo) AS average_kolvo FROM( SELECT COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client) AS subquery;
+SELECT SUM(kolvo) AS average_kolvo FROM( SELECT COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client) AS subquery;
+SELECT MIN(kolvo) AS average_kolvo FROM( SELECT COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client) AS subquery;
+SELECT MAX(kolvo) AS average_kolvo FROM( SELECT COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client) AS subquery;
+SELECT id_Client, COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client ORDER BY kolvo;
+SELECT C.id_Client, C.id_Personality
+    -> FROM Client C
+    -> INNER JOIN Client_has_Timetable CT ON C.id_Client = CT.id_Client
+    -> INNER JOIN Timetable T ON CT.id_Timetable = T.id_Timetable
+    -> INNER JOIN Type_of_dance TD ON T.id_Type_of_dance = TD.id_Type_of_dance
+    -> GROUP BY C.id_Client, C.id_Personality
+    -> HAVING COUNT(DISTINCT TD.id_Type_of_dance) = (SELECT COUNT(*) FROM Type_of_dance);
+
+__________________________________
+
+SELECT Personality.Second_name, inventory.Name_inventory,  FROM Employee
+INNER JOIN Employee_has_Timetable on employee.id_employee=employee_has_timetable.id_employee
+INNER JOIN Timetable on employee_has_timetable.id_timetable=timetable.id_timetable
+INNER JOIN Hall on timetable.id_hall=hall.id_hall
+INNER JOIN Inventory on hall.id_inventory=inventory.id_inventory
+INNER JOIN Personality ON Employee.id_personality=personality.id_personality ORDER BY Personality.Second_name;
+
+__________________________________
+
+SELECT Type_of_dancecol, Number_hall FROM Hall 
+INNER JOIN Timetable 
+ON Hall.id_Hall=Timetable.id_Hall
+INNER JOIN Type_of_dance ON Timetable.id_Type_of_dance=Type_of_dance.id_Type_of_dance
+WHERE Type_of_dancecol = "танго" AND Timetable.data = '2023-12-11 12:00:00';
+
+INSERT INTO Personality (Second_name, Name, Phone, Age) VALUES ( "Вотяков", "Арсений", 234, 17)
+
+UPDATE personality
+SET Age = 20
+WHERE id_personality = 1;
+
+______________________________________________________________
+SELECT id_Personality, Second_name, Name, Surname, Phone, AVG(Age) AS "AVG" FROM Personality;
+
+_____________________________________________________________
+SELECT id_Client, COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client;
+
+SELECT id_Personality, Second_name, Name, Surname, Phone, SUM(Age) 
+OVER (PARTITION BY Second_name ORDER BY id_Personality ROWS 
+BETWEEN CURRENT ROW AND 1 FOLLOWING) AS "AVG" FROM Personality;
+
+!!!
+SELECT id_Client, Second_name, COUNT(*) AS kolvo
+OVER (PaRRIRION BY Personality.Second_name)
+FROM Client_has_timetable INNER JOIN Client
+ON Client_has_timetable.id_Client = Client.id_Client
+INNER JOIN Personality 
+ON Client.id_Personality = Personality.id_Personality;
+
+SELECT Employee_has_timetable.id_employee, Client.id_Client, 
+Personality.Second_name, COUNT(*) AS kolvo
+FROM Client_has_timetable INNER JOIN Client
+ON Client_has_timetable.id_Client = Client.id_Client
+INNER JOIN Personality 
+ON Client.id_Personality = Personality.id_Personality
+INNER JOIN Timetable 
+ON Client_has_timetable.id_Timetable=Timetable.id_timetable
+INNER JOIN Employee_has_timetable ON Timetable.id_timetable=Employee_has_timetable.id_timetable
+GROUP BY Employee_has_timetable.id_employee, Client.id_Client;
+
+SELECT Personality.Second_name, Client.id_Client, COUNT(*) AS kolvo
+FROM Client_has_timetable
+INNER JOIN Client ON Client_has_timetable.id_Client = Client.id_Client
+INNER JOIN Personality ON Client.id_Personality = Personality.id_Personality
+INNER JOIN Timetable ON Client_has_timetable.id_Timetable = Timetable.id_timetable
+INNER JOIN Employee_has_timetable ON Timetable.id_timetable = Employee_has_timetable.id_timetable
+INNER JOIN Employee ON Employee_has_timetable.id_employee = Employee.id_Employee
+GROUP BY Personality.Second_name, Client.id_Client;
+
+
+SELECT Employee_has_timetable.id_employee, Client.id_Client, 
+Personality.Second_name, COUNT(*) 
+OVER (PARTITION BY Personality.Second_name)
+AS kolvo
+FROM Client_has_timetable INNER JOIN Client
+ON Client_has_timetable.id_Client = Client.id_Client
+INNER JOIN Personality 
+ON Client.id_Personality = Personality.id_Personality
+INNER JOIN Timetable 
+ON Client_has_timetable.id_Timetable=Timetable.id_timetable
+INNER JOIN Employee_has_timetable ON Timetable.id_timetable=Employee_has_timetable.id_timetable
+GROUP BY Employee_has_timetable.id_employee, Client.id_Client;
+
+SELECT Employee_has_timetable.id_employee, Client.id_Client, 
+Personality.Second_name, COUNT(*) AS kolvo
+OVER (PARTITION BY Employee_has_timetable.id_employee)
+FROM Client_has_timetable INNER JOIN Client
+ON Client_has_timetable.id_Client = Client.id_Client
+INNER JOIN Personality 
+ON Client.id_Personality = Personality.id_Personality
+INNER JOIN Timetable 
+ON Client_has_timetable.id_Timetable=Timetable.id_timetable
+INNER JOIN Employee_has_timetable ON Timetable.id_timetable=Employee_has_timetable.id_timetable
+GROUP BY Employee_has_timetable.id_employee, Client.id_Client;
+
+SELECT SUM(kolvo) AS average_kolvo FROM( SELECT COUNT(*) AS kolvo FROM Client_has_timetable GROUP BY id_Client) AS subquery;
+_____________________________________________________
