@@ -181,37 +181,31 @@
   
 Все сущности реализованы в MySQL, добавлены ключи PK и FK, ограничения NOT NULL, UNIQUE, связи многие-ко-многим разделены через промежуточные таблицы.
 
-Название сущности	Название атрибута	Тип данных	Особое состояние	Ключ
-Timetable	Id_Timetable	int	Auto_increment	PK
-	Date	datetime	Not null	-
-	id_Type_of_dance	inr	Not null	FK
-	Id_Hall	inr	Not null	FK
-Type_of_dance	If_Type_of_dance	int	Auto_increment	PK
-	Type_of_dancecol	varchar	Not null	-
-Personality	Id_ Personality	int	Auto_increment	PK
-	Second_name	varchar	Not null	-
-	Name	varchar	Not null	-
-	Surname	varchar	-	-
-	Phone	varchar	Not null	-
-	Age	inr	Not null	
-Client_has_Timetable	id_Client	int	Not null	PK, FK
-	Id_Timetable	int	Not null	PK, FK
-Client	id_Client	int	Auto_increment	PK
-	Id_Personality	int	Not null	FK
-	Card	varchar		
-Post	Id_Post	inr	Auto_increment	PK
-	Postcol	varchar	Not null	-
-Employee	id_Client	int	Auto_increment	PK
-	Id_Personality	int	Not null	FK
-	Id_Post	int	Not null	FK
-Employee_has_Timetable	id_Employee	int	Not null	PK, FK
-	Id_Timetable	int	Not null	PK, FK
-Inventory	Id_Inventory	inr	Auto_increment	PK
-	Name_inventory	varchar	Not null	-
-Hall	Id_Hall	inr	Auto_increment	PK
-	Number_hall	varchar	Not null	-
-	Id_Inventory	int	Not null	FK
-
+| Название сущности       | Название атрибута   | Тип данных | Особое состояние | Ключ      |
+|--------------------------|---------------------|------------|------------------|-----------|
+| Timetable           | Id_Timetable        | int        | Auto_increment   | PK        |
+|                          | Date                | datetime   | Not null         | -         |
+|                          | id_Type_of_dance    | int        | Not null         | FK        |
+|                          | Id_Hall             | int        | Not null         | FK        |
+| Type_of_dance       | If_Type_of_dance    | int        | Auto_increment   | PK        |
+|                          | Type_of_dancecol    | varchar    | Not null         | -         |
+| Personality         | Id_Personality      | int        | Auto_increment   | PK        |
+|                          | Second_name         | varchar    | Not null         | -         |
+|                          | Name                | varchar    | Not null         | -         |
+|                          | Surname             | varchar    | -                | -         |
+|                          | Phone               | varchar    | Not null         | -         |
+|                          | Age                 | int        | Not null         | -         |
+| Client_has_Timetable| id_Client           | int        | Not null         | PK, FK    |
+|                          | Id_Timetable        | int        | Not null         | PK, FK    |
+| Client              | id_Client           | int        | Auto_increment   | PK        |
+|                          | Id_Personality      | int        | Not null         | FK        |
+|                          | Card                | varchar    | -                | -         |
+| Post                | Id_Post             | int        | Auto_increment   | PK        |
+|                          | Postcol             | varchar    | Not null         | -         |
+| Employee            | id_Client           | int        | Auto_increment   | PK        |
+|                          | Id_Personality      | int        | Not null         | FK        |
+|                          | Id_Post             | int        | Not null         | FK        |
+| Employee_has_Timetable | id_Employee      | int        | Not null
 
 ### 2.3. Заполнение БД
 - Таблицы заполнены начальными данными (INSERT INTO).  
