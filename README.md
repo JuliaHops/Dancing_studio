@@ -217,8 +217,11 @@
 |                          | Id_Inventory        | int        | Not null         | FK        |
 
 ### 2.3. Заполнение БД
+- Создание таблиц (CREATE TABLE).
 - Таблицы заполнены начальными данными (INSERT INTO).  
 - Проверка структуры — DESCRIBE, SHOW TABLES.  
+
+Запросы прописаны в файле https://github.com/JuliaHops/Dancing_studio/blob/main/SQL.
 
 ### 2.4. Запросы
 - SELECT + WHERE — фильтрация по условиям.  
